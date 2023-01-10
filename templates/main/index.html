@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+ {% block Menu %}
+    <h1>Menu</h1>
+    <div class="navbar">
+        <a href="#">Главная</a>
+        <a href="#">Новости</a>
+        <div class="dropdown">
+            <button class="dropbtn"> obs
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                 <a href="{% url 'main:create_area' %}">oblast koshuu</a>
+                {% for area in areas %}
+                <a href="{% url 'main:batken' area.id %}">{{area.name}}</a>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn"> Райондор
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                 <a href="{% url 'main:create_region' %}">Район кошуу</a>
+                {% for region in regions %}
+                <a href="{% url 'main:sverdlov' region.id %}">{{region.name}}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+     {% endblock %}

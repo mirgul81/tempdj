@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>batken</title>
+</head>
+<body>
+
+</body>
+</html>
+
+
+{% extends "base.html" %}
+
+{% block Content %}
+
+    <h1>{{area.name}}</h1>
+    <p>{{area.info}}</p>
+<a href="{% url 'main:update_area' area.id %}">
+    <button>Update</button>
+</a>
+<a href="{% url 'main:delete_area' area.id %}">
+    <button>Delete</button>
+</a>
+    {% endblock %}
+
+ {% block Menu %}
+    <h1>Menu</h1>
+    <div class="navbar">
+        <a href="#">Главная</a>
+        <a href="#">Новости</a>
+        <div class="dropdown">
+            <button class="dropbtn"> obs
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="{% url 'main:create_area' %}">oblast кошуу</a>
+                {% for area in areas %}
+                <a href="{% url 'main:batken' area.id %}">{{area.name}}</a>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn"> Райондор
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="{% url 'main:create_region' %}">Район кошуу</a>
+                {% for region in regions %}
+                <a href="{% url 'main:sverdlov' region.id %}">{{region.name}}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+     {% endblock %}
